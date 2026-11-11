@@ -67,7 +67,7 @@ public class CollectionSubtypeTest extends InteropTestBase {
     @Test
     public void testEnumSet() throws IOException {
         // Bug in apache deserializer, can't handle EnumSet
-        Assume.assumeTrue(deserializeFunctor != apacheDeserializer);
+        Assume.assumeTrue("Apache Avro deserializer cannot handle EnumSet", deserializeFunctor != apacheDeserializer);
         EnumSet<DummyEnum> original = EnumSet.of(DummyEnum.EAST, DummyEnum.NORTH);
         //
         EnumSet<DummyEnum> result = roundTrip(type(EnumSet.class, DummyEnum.class), original);
@@ -111,7 +111,7 @@ public class CollectionSubtypeTest extends InteropTestBase {
     @Test
     public void testSet() throws IOException {
         // Bug in apache deserializer, can't handle Set
-        Assume.assumeTrue(deserializeFunctor != apacheDeserializer);
+        Assume.assumeTrue("Apache Avro deserializer cannot handle Set", deserializeFunctor != apacheDeserializer);
         Set<Integer> original = new HashSet<>();
         original.add(1234);
         original.add(98768234);
